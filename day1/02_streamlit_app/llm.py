@@ -1,7 +1,7 @@
 # llm.py
 import os
 import torch
-from transformers import pipeline
+from transformers import pipeline, AutoTokenizer
 import streamlit as st
 import time
 from config import MODEL_NAME
@@ -18,9 +18,11 @@ def load_model():
         
         device = "cuda" if torch.cuda.is_available() else "cpu"
         st.info(f"Using device: {device}") # 使用デバイスを表示
+        tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME, use_auth_token=hf_token)
         pipe = pipeline(
             "text-generation",
             model=MODEL_NAME,
+            tokenizer=tokenizer,
             model_kwargs={"torch_dtype": torch.bfloat16},
             device=device
         )
