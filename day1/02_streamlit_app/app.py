@@ -78,4 +78,4 @@ elif st.session_state.page == "サンプルデータ管理":
 
 # --- フッターなど（任意） ---
 st.sidebar.markdown("---")
-st.sidebar.info("開発者: Hiroaki Taniguchi")
+st.sidebar.info("開発者: Hiroaki Taniguchi hogehoge")
